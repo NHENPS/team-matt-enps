@@ -1,6 +1,4 @@
 # team-matt-enps
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -136,13 +134,11 @@ li { margin-bottom:6px; font-weight:600; }
 </div>
 
 <!-- RIGHT -->
-<div>
+<div style="align-self:flex-start;">
 <div class="card">
-<h3 style="color:#FF6A00;">Leaderboard</h3>
+<h3 style="color:#FF6A00; margin-top:0;">Leaderboard</h3>
 <ol id="leaderboard"></ol>
 </div>
-</div>
-
 </div>
 
 <script>
@@ -167,6 +163,27 @@ l.appendChild(li);
 });
 }
 buildLeaderboard();
+
+  <div class="card" style="margin-top:16px;">
+<h3 style="color:#FF6A00; margin-top:0;">Detractor Insight & Fix</h3>
+
+<div class="insight">
+<strong>What drives 0–6 scores</strong><br>
+Customers score low when their issue is not resolved on first contact and
+requires repeated effort, follow-ups, or self-resolution — even when staff
+are polite and professional.
+</div>
+
+<div class="insight" style="margin-top:12px;">
+<strong>How we fix this</strong>
+<ul style="margin-top:6px; padding-left:18px;">
+<li>Strengthen first-contact ownership end to end</li>
+<li>Reduce handoffs and repeat explanations</li>
+<li>Set clear resolution expectations and next steps</li>
+<li>Confirm resolution before case closure</li>
+</ul>
+</div>
+</div>
 </script>
 
 </body>
