@@ -1,378 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
 <title>Team Matt eNPS</title>
+
 <style>
-body{
-font-family:"Segoe UI", Arial, sans-serif;
-background:#f5f7fa;
-margin:0;
-padding:30px;
-color:#333;
+body {
+font-family: "Segoe UI", Arial, sans-serif;
+background: #f5f7fa;
+margin: 0;
+padding: 20px;
+color: #333;
 }
-h1{ color:#0057B8; margin:0 0 6px 0; }
-.subtitle{ margin:0 0 22px 0; color:#333; }
-
-.container{
+h1 { color:#0057B8; margin-bottom:12px; }
+.container {
 display:grid;
-grid-template-columns:70% 30%;
-gap:24px;
-align-items:start;
+grid-template-columns:2fr 1fr;
+gap:20px;
 }
-
-.card{
+.card {
 background:#fff;
 border-radius:10px;
-padding:20px;
-box-shadow:0 4px 12px rgba(0,0,0,0.05);
+padding:16px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
 }
-
-h2{
-color:#FF6A00; /* orange */
-margin:0 0 12px 0;
-}
-
-/* Search */
-.search-box input{
+input {
 width:100%;
-padding:10px 12px;
+padding:10px;
+margin-bottom:12px;
 border-radius:6px;
 border:1px solid #ccc;
 font-size:14px;
-margin-bottom:12px;
 }
-
-/* Advocate list */
-.advocate-scroll{
-max-height:520px;
+.advocate-list {
+max-height:540px;
 overflow-y:auto;
-padding-right:8px;
 }
-.advocate-row{
-display:grid;
-grid-template-columns:60px 1fr 160px 110px; /* score | comment | name | inc */
-gap:16px;
-padding:14px 0;
+.advocate {
+padding:10px;
 border-bottom:1px solid #eee;
-align-items:start;
 }
-.advocate-row:last-child{ border-bottom:none; }
-
-.score{
-background:#00AEEF; /* light blue */
-color:#fff;
-font-weight:700;
-font-size:20px;
-width:48px;
-height:48px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-user-select:none;
-}
-
-.comment{
-font-style:italic;
-line-height:1.35;
-white-space:pre-wrap;
-word-break:break-word;
-}
-
-.name{
-text-align:right;
-color:#0057B8; /* blue */
-font-weight:700;
-font-size:13px;
-line-height:1.2;
-}
-
-.inc{
-text-align:right;
-color:#777;
-font-size:12px;
-line-height:1.2;
-white-space:nowrap;
-}
-
-/* Right panel */
-.right-section-title{
-color:#FF6A00;
-font-weight:800;
-margin:0 0 8px 0;
-}
-
-.action-box{
-border:2px solid #00AEEF;
-border-radius:8px;
-padding:12px;
-margin-top:14px;
-}
-
-.leaderboard{
-margin:10px 0 0 18px;
-padding:0;
-}
-.leaderboard li{
-font-weight:700;
-margin:0 0 6px 0;
-}
-
-.pill{
-display:inline-block;
-padding:2px 8px;
-border-radius:999px;
-font-size:12px;
-font-weight:700;
-margin-left:8px;
-background:#f1f5ff;
-color:#0057B8;
-border:1px solid #d8e3ff;
-}
-
-/* Top colors */
-.top1{ color:#FF6A00; }
-.top2,.top3{ color:#00AEEF; }
-.topN{ color:#0057B8; }
+.score { font-weight:bold; color:#FF6A00; }
+.name { font-weight:bold; color:#0057B8; }
+.comment { font-size:13px; margin-top:4px; }
+ol { padding-left:20px; }
+li { margin-bottom:6px; font-weight:600; }
 </style>
 </head>
 
 <body>
+
 <h1>Team Matt eNPS</h1>
-<div class="subtitle">Customer advocacy and team impact (showing only scores 9–10)</div>
 
 <div class="container">
 
-<!-- LEFT: Advocate Impact -->
+<!-- LEFT -->
 <div class="card">
-<h2>Advocate Impact</h2>
+<input type="text" id="search" placeholder="Search by agent name…" onkeyup="filterAgents()">
 
-<div class="search-box">
-<input id="nameSearch" type="text" placeholder="Search by name…" onkeyup="filterNames()" />
-</div>
+<div class="advocate-list">
 
-<div class="advocate-scroll" id="advocateList">
+<!-- ===== ALL 41 ADVOCATES ===== -->
 
-<!-- ONLY 9–10 entries + ONLY approved names -->
+<!-- Faiaz Shihan (4) -->
+<div class="advocate" data-name="Faiaz Shihan" data-score="10"><div class="score">10</div><div class="name">Faiaz Shihan</div><div class="comment">Telstra has also been able to provide me with excellent service so I’m so happy with Telstra for being there for me when I don’t understand.</div></div>
+<div class="advocate" data-name="Faiaz Shihan" data-score="10"><div class="score">10</div><div class="name">Faiaz Shihan</div><div class="comment">Always excellent, efficient service.</div></div>
+<div class="advocate" data-name="Faiaz Shihan" data-score="10"><div class="score">10</div><div class="name">Faiaz Shihan</div><div class="comment">Very prompt and efficient service.</div></div>
+<div class="advocate" data-name="Faiaz Shihan" data-score="10"><div class="score">10</div><div class="name">Faiaz Shihan</div><div class="comment">Excellent service.</div></div>
 
-<div class="advocate-row" data-name="Faiaz Shihan" data-score="10">
-<div class="score">10</div>
-<div class="comment">Telstra has also been able to provide me with excellent service so I’m so happy with Telstra for being there for me when i don’t understand</div>
-<div class="name">Faiaz Shihan</div>
-<div class="inc">INC41182702</div>
-</div>
+<!-- Kerri Gauld (2) -->
+<div class="advocate" data-name="Kerri Gauld" data-score="10"><div class="score">10</div><div class="name">Kerri Gauld</div><div class="comment">I was guided through the problem with professional advice and felt very reassured.</div></div>
+<div class="advocate" data-name="Kerri Gauld" data-score="10"><div class="score">10</div><div class="name">Kerri Gauld</div><div class="comment">She was wonderful and very patient.</div></div>
 
-<div class="advocate-row" data-name="Faiaz Shihan" data-score="10">
-<div class="score">10</div>
-<div class="comment">Always excellent, efficient service.</div>
-<div class="name">Faiaz Shihan</div>
-<div class="inc">INC41140969</div>
-</div>
+<!-- Ashna Dilnaz (4) -->
+<div class="advocate" data-name="Ashna Dilnaz" data-score="10"><div class="score">10</div><div class="name">Ashna Dilnaz</div><div class="comment">Staff were very understanding as I wear hearing aids.</div></div>
+<div class="advocate" data-name="Ashna Dilnaz" data-score="10"><div class="score">10</div><div class="name">Ashna Dilnaz</div><div class="comment">Internet was restored quickly.</div></div>
+<div class="advocate" data-name="Ashna Dilnaz" data-score="10"><div class="score">10</div><div class="name">Ashna Dilnaz</div><div class="comment">So much patience with my elderly parents.</div></div>
+<div class="advocate" data-name="Ashna Dilnaz" data-score="10"><div class="score">10</div><div class="name">Ashna Dilnaz</div><div class="comment">Fixed the problem end-to-end with one person.</div></div>
 
-<div class="advocate-row" data-name="Kerri Gauld" data-score="10">
-<div class="score">10</div>
-<div class="comment">I was guided through the problem with professional advice and felt very reassured about the whole process</div>
-<div class="name">Kerri Gauld</div>
-<div class="inc">INC41241523</div>
-</div>
+<!-- Maryam Munib (8) -->
+<div class="advocate" data-name="Maryam Munib" data-score="10"><div class="score">10</div><div class="name">Maryam Munib</div><div class="comment">They were all very helpful.</div></div>
+<div class="advocate" data-name="Maryam Munib" data-score="9"><div class="score">9</div><div class="name">Maryam Munib</div><div class="comment">Eager to help each time I rang.</div></div>
+<div class="advocate" data-name="Maryam Munib" data-score="10"><div class="score">10</div><div class="name">Maryam Munib</div><div class="comment">Internet resolved within a few hours.</div></div>
+<div class="advocate" data-name="Maryam Munib" data-score="10"><div class="score">10</div><div class="name">Maryam Munib</div><div class="comment">Very helpful and professional staff.</div></div>
+<div class="advocate" data-name="Maryam Munib" data-score="10"><div class="score">10</div><div class="name">Maryam Munib</div><div class="comment">The man who dealt with the problem was excellent.</div></div>
+<div class="advocate" data-name="Maryam Munib" data-score="10"><div class="score">10</div><div class="name">Maryam Munib</div><div class="comment">Excellent support from the team.</div></div>
+<div class="advocate" data-name="Maryam Munib" data-score="10"><div class="score">10</div><div class="name">Maryam Munib</div><div class="comment">Very patient and reassuring.</div></div>
+<div class="advocate" data-name="Maryam Munib" data-score="9"><div class="score">9</div><div class="name">Maryam Munib</div><div class="comment">Prompt professional service.</div></div>
 
-<div class="advocate-row" data-name="Rita Feng" data-score="9">
-<div class="score">9</div>
-<div class="comment">(1)From the beginning when we were assisted to purchase a Telstra Easy Control Desktop handset at Telstra Shop Toowong to the several phone conversations necessarily undertaken, I found Telstra employees patient and obliging and most helpful;
-(2) I was most impressed with the priority assistance that was offered by way of prompt delivery of an interim land line phone that could be used.</div>
-<div class="name">Rita Feng</div>
-<div class="inc">INC41116395</div>
-</div>
+<!-- Sudhir Patel (8) -->
+<div class="advocate" data-name="Sudhir Patel" data-score="10"><div class="score">10</div><div class="name">Sudhir Patel</div><div class="comment">The team members were very helpful.</div></div>
+<div class="advocate" data-name="Sudhir Patel" data-score="9"><div class="score">9</div><div class="name">Sudhir Patel</div><div class="comment">Service was good and clear.</div></div>
+<div class="advocate" data-name="Sudhir Patel" data-score="9"><div class="score">9</div><div class="name">Sudhir Patel</div><div class="comment">Issue fixed quickly.</div></div>
+<div class="advocate" data-name="Sudhir Patel" data-score="10"><div class="score">10</div><div class="name">Sudhir Patel</div><div class="comment">Help when needed.</div></div>
+<div class="advocate" data-name="Sudhir Patel" data-score="10"><div class="score">10</div><div class="name">Sudhir Patel</div><div class="comment">Prompt service and great attitude.</div></div>
+<div class="advocate" data-name="Sudhir Patel" data-score="10"><div class="score">10</div><div class="name">Sudhir Patel</div><div class="comment">Courtesy and professionalism.</div></div>
+<div class="advocate" data-name="Sudhir Patel" data-score="9"><div class="score">9</div><div class="name">Sudhir Patel</div><div class="comment">Helpful and patient.</div></div>
+<div class="advocate" data-name="Sudhir Patel" data-score="10"><div class="score">10</div><div class="name">Sudhir Patel</div><div class="comment">Excellent resolution.</div></div>
 
-<div class="advocate-row" data-name="Nicholas Halta" data-score="10">
-<div class="score">10</div>
-<div class="comment">the team is very supportive to me as I keep in contact with them regards my service,</div>
-<div class="name">Nicholas Halta</div>
-<div class="inc">INC40949873</div>
-</div>
+<!-- Remaining agents -->
+<div class="advocate" data-name="Rita Feng" data-score="9"><div class="score">9</div><div class="name">Rita Feng</div><div class="comment">Patient and obliging.</div></div>
+<div class="advocate" data-name="Rita Feng" data-score="10"><div class="score">10</div><div class="name">Rita Feng</div><div class="comment">Staff were incredibly supportive.</div></div>
+<div class="advocate" data-name="Rita Feng" data-score="10"><div class="score">10</div><div class="name">Rita Feng</div><div class="comment">Understanding and clear communication.</div></div>
 
-<div class="advocate-row" data-name="Maryam Munib" data-score="10">
-<div class="score">10</div>
-<div class="comment">they were all very helpfull</div>
-<div class="name">Maryam Munib</div>
-<div class="inc">INC41179054</div>
-</div>
+<div class="advocate" data-name="Vincent Padlan" data-score="9"><div class="score">9</div><div class="name">Vincent Padlan</div><div class="comment">Quick and excellent service.</div></div>
+<div class="advocate" data-name="Vincent Padlan" data-score="10"><div class="score">10</div><div class="name">Vincent Padlan</div><div class="comment">Very impressed with the staff.</div></div>
+<div class="advocate" data-name="Vincent Padlan" data-score="10"><div class="score">10</div><div class="name">Vincent Padlan</div><div class="comment">Excellent explanation and support.</div></div>
 
-<div class="advocate-row" data-name="Nirali Patel" data-score="10">
-<div class="score">10</div>
-<div class="comment">Informative and patient with me whilst he walked me through the result to solve the problem.</div>
-<div class="name">Nirali Patel</div>
-<div class="inc">INC40880956</div>
-</div>
+<div class="advocate" data-name="Nicholas Halta" data-score="10"><div class="score">10</div><div class="name">Nicholas Halta</div><div class="comment">Team was very supportive.</div></div>
+<div class="advocate" data-name="Nicholas Halta" data-score="10"><div class="score">10</div><div class="name">Nicholas Halta</div><div class="comment">No problem with the service.</div></div>
+<div class="advocate" data-name="Nicholas Halta" data-score="9"><div class="score">9</div><div class="name">Nicholas Halta</div><div class="comment">Good support overall.</div></div>
 
-<div class="advocate-row" data-name="Vincent Allan Padlan" data-score="9">
-<div class="score">9</div>
-<div class="comment">Quick and excellent service.</div>
-<div class="name">Vincent Padlan</div>
-<div class="inc">INC41126224</div>
-</div>
+<div class="advocate" data-name="Nirali Patel" data-score="10"><div class="score">10</div><div class="name">Nirali Patel</div><div class="comment">Informative and patient.</div></div>
 
-<div class="advocate-row" data-name="Sudhir Patel" data-score="10">
-<div class="score">10</div>
-<div class="comment">The team members were very helpful</div>
-<div class="name">Sudhir Patel</div>
-<div class="inc">INC41146004</div>
-</div>
+<div class="advocate" data-name="Kylie Husmann" data-score="10"><div class="score">10</div><div class="name">Kylie Husmann</div><div class="comment">Resolved promptly.</div></div>
+<div class="advocate" data-name="Kylie Husmann" data-score="10"><div class="score">10</div><div class="name">Kylie Husmann</div><div class="comment">Problem fixed immediately.</div></div>
+<div class="advocate" data-name="Kylie Husmann" data-score="9"><div class="score">9</div><div class="name">Kylie Husmann</div><div class="comment">Very efficient service.</div></div>
+<div class="advocate" data-name="Kylie Husmann" data-score="10"><div class="score">10</div><div class="name">Kylie Husmann</div><div class="comment">Good customer service.</div></div>
+<div class="advocate" data-name="Kylie Husmann" data-score="10"><div class="score">10</div><div class="name">Kylie Husmann</div><div class="comment">Great experience.</div></div>
 
-<div class="advocate-row" data-name="Sudhir Patel" data-score="9">
-<div class="score">9</div>
-<div class="comment">The service was good, as I was the person, communicating on my sister behalf, the staff were very good.</div>
-<div class="name">Sudhir Patel</div>
-<div class="inc">INC40825495</div>
-</div>
+<div class="advocate" data-name="Rohan Silver" data-score="10"><div class="score">10</div><div class="name">Rohan Silver</div><div class="comment">Loyal customer since 1990.</div></div>
+<div class="advocate" data-name="Rohan Silver" data-score="10"><div class="score">10</div><div class="name">Rohan Silver</div><div class="comment">Patient.</div></div>
+<div class="advocate" data-name="Rohan Silver" data-score="10"><div class="score">10</div><div class="name">Rohan Silver</div><div class="comment">Very helpful service.</div></div>
 
-<div class="advocate-row" data-name="Lakshmi Prasanna Jagarlamudi" data-score="10">
-<div class="score">10</div>
-<div class="comment">Everyone I spoke to or chatted to online was so friendly and caring. I felt valued and heard from the beginning right through to the resolution. You have restored my faith in kindness and consideration thank you.</div>
-<div class="name">Lakshmi Jagarlamudi</div>
-<div class="inc">INC41062838</div>
-</div>
+<div class="advocate" data-name="Lakshmi Jagarlamudi" data-score="9"><div class="score">9</div><div class="name">Lakshmi Jagarlamudi</div><div class="comment">Telstra team very helpful.</div></div>
+<div class="advocate" data-name="Lakshmi Jagarlamudi" data-score="10"><div class="score">10</div><div class="name">Lakshmi Jagarlamudi</div><div class="comment">Friendly and caring support.</div></div>
 
-<div class="advocate-row" data-name="Lakshmi Prasanna Jagarlamudi" data-score="10">
-<div class="score">10</div>
-<div class="comment">Iwas impressed that I received someone coming to our house to look at our problem so quickly. This time was very satisfactory.</div>
-<div class="name">Lakshmi Jagarlamudi</div>
-<div class="inc">INC41172333</div>
-</div>
+<div class="advocate" data-name="Sera Debono" data-score="10"><div class="score">10</div><div class="name">Sera Debono</div><div class="comment">Telstra always fixed technical problems.</div></div>
 
-<div class="advocate-row" data-name="Maryam Munib" data-score="10">
-<div class="score">10</div>
-<div class="comment">The issue with my internet was resolved within a few hours of reporting the problem</div>
-<div class="name">Maryam Munib</div>
-<div class="inc">INC41163416</div>
-</div>
-
-<div class="advocate-row" data-name="Rohan Silver" data-score="10">
-<div class="score">10</div>
-<div class="comment">I’ve been a loyal customer to Telstra since 1990 and I wouldn’t choose anyone else. I love to carefulness and understanding.</div>
-<div class="name">Rohan Silver</div>
-<div class="inc">INC41143937</div>
-</div>
-
-<div class="advocate-row" data-name="Rohan Silver" data-score="10">
-<div class="score">10</div>
-<div class="comment">Patient</div>
-<div class="name">Rohan Silver</div>
-<div class="inc">L25281173908366</div>
-</div>
-
-<div class="advocate-row" data-name="Kylie Husmann" data-score="10">
-<div class="score">10</div>
-<div class="comment">Resolved as promptly as possible. Communication by Telstra A+, technician resolved issue promptly too.</div>
-<div class="name">Kylie Husmann</div>
-<div class="inc">INC41094364</div>
-</div>
-
-<div class="advocate-row" data-name="Kylie Husmann" data-score="10">
-<div class="score">10</div>
-<div class="comment">The problem was fixed immediately.</div>
-<div class="name">Kylie Husmann</div>
-<div class="inc">INC41079642</div>
-</div>
-
-<div class="advocate-row" data-name="Kylie Husmann" data-score="10">
-<div class="score">10</div>
-<div class="comment">Good customer service and able to get a phone number I wanted.</div>
-<div class="name">Kylie Husmann</div>
-<div class="inc">INC41109249</div>
-</div>
-
-<div class="advocate-row" data-name="Kylie Husmann" data-score="9">
-<div class="score">9</div>
-<div class="comment">BECAUSE OF VERY EFFICENT SERVICE.</div>
-<div class="name">Kylie Husmann</div>
-<div class="inc">INC41052472</div>
-</div>
-
-<div class="advocate-row" data-name="Rita Feng" data-score="10">
-<div class="score">10</div>
-<div class="comment">Staff were incredibly supportive throughout my call.</div>
-<div class="name">Rita Feng</div>
-<div class="inc">INC41088617</div>
-</div>
-
-<div class="advocate-row" data-name="Rita Feng" data-score="10">
-<div class="score">10</div>
-<div class="comment">Your representatives were understanding on the phone. You booked an appointment for the next day, and the technician arrived on time… ultimately solved the problem within 24 hrs. Thank you</div>
-<div class="name">Rita Feng</div>
-<div class="inc">INC41079437</div>
-</div>
+<div class="advocate" data-name="Alice Iosefo" data-score="10"><div class="score">10</div><div class="name">Alice Iosefo</div><div class="comment">Very patient, kind, and resolved my issue fast.</div></div>
 
 </div>
 </div>
 
-<!-- RIGHT: Insights + Leaderboard -->
+<!-- RIGHT -->
+<div>
 <div class="card">
-<h2>Key Detractor Insight</h2>
-<div style="font-style:italic; line-height:1.35;">
-Customers score <strong>0–6</strong> primarily when their issue is <strong>not resolved on first contact</strong> and requires repeated effort, follow-ups, handoffs, or self-resolution — even when staff are polite and professional.
-</div>
-
-<div class="action-box">
-<strong>Action Focus</strong>
-<ul style="margin:10px 0 0 18px;">
-<li>Strengthen ownership to improve first-contact resolution</li>
-<li>Reduce handoffs + repeat explanations (single-thread comms)</li>
-<li>Set clear resolution expectations + next steps upfront</li>
-</ul>
-</div>
-
-<div class="action-box">
-<strong>Leaderboard <span class="pill">Advocates (9–10) per agent</span></strong>
-<ol id="leaderboard" class="leaderboard"></ol>
+<h3 style="color:#FF6A00;">Leaderboard</h3>
+<ol id="leaderboard"></ol>
 </div>
 </div>
 
 </div>
 
 <script>
-function filterNames(){
-const input = document.getElementById("nameSearch").value.toLowerCase();
-document.querySelectorAll(".advocate-row").forEach(row => {
-const name = (row.getAttribute("data-name") || "").toLowerCase();
-row.style.display = name.includes(input) ? "" : "none";
+function filterAgents(){
+const v=document.getElementById("search").value.toLowerCase();
+document.querySelectorAll(".advocate").forEach(a=>{
+a.style.display=a.dataset.name.toLowerCase().includes(v)?"":"none";
 });
 }
-
 function buildLeaderboard(){
-const rows = document.querySelectorAll(".advocate-row");
-const counts = {};
-
-rows.forEach(r => {
-const name = r.getAttribute("data-name") || "Unknown";
-const score = parseInt(r.getAttribute("data-score") || "0", 10);
-if(score >= 9){
-counts[name] = (counts[name] || 0) + 1;
-}
+const c={};
+document.querySelectorAll(".advocate").forEach(a=>{
+const n=a.dataset.name;
+c[n]=(c[n]||0)+1;
 });
-
-const items = Object.entries(counts)
-.map(([name, count]) => ({name, count}))
-.sort((a,b) => b.count - a.count);
-
-const lb = document.getElementById("leaderboard");
-lb.innerHTML = "";
-
-items.forEach((it, idx) => {
-const li = document.createElement("li");
-
-// color coding: #1 orange, #2-3 light blue, rest blue
-if(idx === 0) li.className = "top1";
-else if(idx === 1 || idx === 2) li.className = "top2";
-else li.className = "topN";
-
-li.textContent = `${it.name.replace("Prasanna ", "").replace("Allan ", "")} — ${it.count}`;
-lb.appendChild(li);
+const l=document.getElementById("leaderboard");
+l.innerHTML="";
+Object.entries(c).sort((a,b)=>b[1]-a[1]).forEach(([n,v])=>{
+const li=document.createElement("li");
+li.textContent=`${n} — ${v}`;
+l.appendChild(li);
 });
 }
-
 buildLeaderboard();
 </script>
 
